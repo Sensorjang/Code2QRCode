@@ -1,0 +1,58 @@
+<idea-plugin>
+  <id>com.Sensorjang.plugin.Code2QRcode.id</id>
+  <name>Code2QRcode</name>
+  <version>1.0</version>
+  <vendor email="515310624@qq.com" url="http://sensorjang.cn:81/">Sensorjang.cn</vendor>
+
+  <description><![CDATA[
+      This is a tool that can help developers easily share the code in the idea when they need it.<br>
+      Developers can select the code and click to generate a QR code, which is convenient for sharing the code quickly and accurately. Recipients can use any QR code recognition tool to extract the results.<br>
+      In addition, it supports viewing the generated QR code in toolwindow and saving the QR code in PNG format to local disk.<br>
+      <br>
+      <em>Chinese and special characters are not supported at the moment</em>
+      <br><br>
+      这是一款可以帮助开发者在需要便捷分享IDEA内代码的工具。<br>
+      开发者可以选中代码后一键生成二维码，便于快速精准得进行分享代码，接受者可以使用任意二维码识别工具提取结果。<br>
+      另外支持在ToolWindow中查看生成的二维码、保存二维码格式为PNG图片到本地磁盘中。<br>
+      <br>
+      <em>暂不支持中文和特殊字符</em><br>
+    ]]></description>
+
+
+  <change-notes><![CDATA[
+      The original version contains the main functions of QR code generation, display and saving to local disk.<br>
+      <br>
+      <em>Save as PNG picture</em><br>
+      <em>You can select any line of code (generally no more than 30 lines are recommended)</em>
+      <br><br>
+      最初版本，此版本包含选择任意二维码生成、在ToolWindow展示二维码、保存到本地磁盘的主体功能<br>
+      <br>
+      <em>保存格式为PNG图片</em><br>
+      <em>可以选择任意行代码(通常不建议大于30行)</em><br>
+    ]]>
+  </change-notes>
+
+
+  <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+
+  <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+    <toolWindow id="Code2QRcode" factoryClass="com.sensorjang.CodeToQRcode.window.QRcodeShowWindowFactory" anchor="right" icon="/img/CodeToQRcode.svg"/>
+  </extensions>
+
+
+  <actions>
+    <group id="Code2QRcode" text="Code2QRcode" popup="true">
+      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+      <action id="Code2QRcode_ac" class="com.sensorjang.CodeToQRcode.action.PopupAction" text="generate QRcode" description="Generate a PNG file containing a QR code (Code2QRcode) for the selected code and save it to a local disk"/>
+    </group>
+  </actions>
+
+</idea-plugin>
