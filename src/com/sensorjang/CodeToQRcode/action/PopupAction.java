@@ -41,8 +41,7 @@ public class PopupAction extends AnAction {
             QRcodeUtils.generateQRCodeImage(selectedText, 250, 250);
         } catch (Exception exception1) {
             exception1.printStackTrace();
-        }
-
+        }// PP love TT
         try {
             QRcodeShowWindowFactory.qRcodeShowWindow.refreshQRcode();
         }catch (Exception exception2){
