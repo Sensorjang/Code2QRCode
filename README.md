@@ -28,11 +28,11 @@ The content shared through the web can support the display of Java, Python, C/C+
 
 ## change-notes
 ### version 2.1.1
-<em>支持快捷键<kbd>Ctrl+Alt+Q</kbd>触发生成二维码</em><br>
-<em>插件现在具有插件图标</em><br>
-<br><br>
 <em>Support shortcut key <kbd>Ctrl+Alt+Q</kbd> to trigger QR code generation</em><br>
 <em>The plug-in now has a plug-in icon</em><br>
+<br><br>
+<em>支持快捷键<kbd>Ctrl+Alt+Q</kbd>触发生成二维码</em><br>
+<em>插件现在具有插件图标</em><br>
 ### version 2.1
 2.1 version, this version includes the main functions of selecting any QR code generation, displaying the QR code in ToolWindow, and saving to local disk for the original version.<br>
 Compared with version 2.0, version 2.1 deletes useless dependencies, reduces the size of the installation package, and is convenient for developers to install.<br>
