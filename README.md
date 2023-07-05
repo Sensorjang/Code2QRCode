@@ -1,6 +1,8 @@
 # Code2QRCode
 ## Author
 Sensorjang
+## Plugin Publishing Page
+Intellij plugin Marketplace: [Code2QRCode](https://plugins.jetbrains.com/plugin/17902-code2qrcode)
 ## Description
 Intellij Marketplace plugin: Code2QRCode
 This is a tool that can help developers easily share the code in the idea when they need it.<br>
