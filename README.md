@@ -30,7 +30,7 @@ The content shared through the web can support the display of Java, Python, C/C+
 ### version 2.1.1
 <em>Support shortcut key <kbd>Ctrl+Alt+Q</kbd> to trigger QR code generation</em><br>
 <em>The plug-in now has a plug-in icon</em><br>
-<br><br>
+<br>
 <em>支持快捷键<kbd>Ctrl+Alt+Q</kbd>触发生成二维码</em><br>
 <em>插件现在具有插件图标</em><br>
 ### version 2.1
@@ -40,7 +40,7 @@ Compared with version 2.0, version 2.1 deletes useless dependencies, reduces the
 <em>Save as PNG picture</em><br>
 <em>You can select any line of code (generally no more than 30 lines are recommended)</em><br>
 <em>Support sharing your code through web links, and support password protection content, burning after reading web sharing links (i.e. once link),</em><br>
-<br><br>
+<br>
 2.1版本，此版本包含原始版本的选择任意二维码生成、在ToolWindow展示二维码、保存到本地磁盘的主体功能<br>
 相对于2.0版本，2.1版本删除了无用的依赖项，减小了安装包的体积，便于开发者安装。<br>
 <br>
@@ -53,8 +53,8 @@ In addition, on the basis of the original version, it supports creating web shar
 The content shared through the web can support the display of Java, Python, C/C++, GO, MarkDown, Json, Bash, text and other formats.<br>
 <br>
 <em>Save as PNG picture</em><br>
-<em>You can select any line of code (generally no more than 30 lines are recommended)</em>
-<br><br>
+<em>You can select any line of code (generally no more than 30 lines are recommended)</em><br>
+<br>
 2.0版本，此版本包含原有的选择任意二维码生成、在ToolWindow展示二维码、保存到本地磁盘的主体功能<br>
 此外，在原有版本基础上新增支持创建web分享链接、阅后即焚web分享链接（也即once link），并且支持对web分享的内容使用自定义密码限制访问。<br>
 通过web分享的内容可以支持Java、Python、C/C++、GO、MarkDown、Json、Bash、文本等格式展示。<br>
@@ -65,8 +65,8 @@ The content shared through the web can support the display of Java, Python, C/C+
 The original version contains the main functions of QR code generation, display and saving to local disk.<br>
 <br>
 <em>Save as PNG picture</em><br>
-<em>You can select any line of code (generally no more than 30 lines are recommended)</em>
-<br><br>
+<em>You can select any line of code (generally no more than 30 lines are recommended)</em><br>
+<br>
 最初版本，此版本包含选择任意二维码生成、在ToolWindow展示二维码、保存到本地磁盘的主体功能<br>
 <br>
 <em>保存格式为PNG图片</em><br>
