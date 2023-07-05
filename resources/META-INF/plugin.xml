@@ -63,7 +63,9 @@
   <actions>
     <group id="Code2QRcode" text="Code2QRcode" popup="true">
       <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-      <action id="Code2QRcode_ac" class="com.sensorjang.CodeToQRcode.action.PopupAction" text="generate QRcode" description="Generate a PNG file containing a QR code (Code2QRcode) for the selected code and save it to a local disk"/>
+      <action id="Code2QRcode_ac" class="com.sensorjang.CodeToQRcode.action.PopupAction" text="generate QRcode" description="Generate a PNG file containing a QR code (Code2QRcode) for the selected code and save it to a local disk">
+        <keyboard-shortcut keymap="$default" first-keystroke="control alt Q"/>
+      </action>
     </group>
   </actions>
 
