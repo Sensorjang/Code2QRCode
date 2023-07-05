@@ -4,9 +4,9 @@ Sensorjang
 ## Plugin Publishing Page
 Intellij plugin Marketplace: [Code2QRCode](https://plugins.jetbrains.com/plugin/17902-code2qrcode)
 
-![CodedQRCodev2.1_1.png](https://s2.loli.net/2023/07/05/FxPcvyXEODLAKU9.png) | ![CodedQRCodev2.1_2.png](https://s2.loli.net/2023/07/05/HID26bofyVw8hGJ.png)
----|---
-![CodedQRCodev2.1_3.png](https://s2.loli.net/2023/07/05/2gfB6WcwC7dpVUu.png) | ![CodedQRCodev2.1_4.png](https://s2.loli.net/2023/07/05/coNr7JEBGRnT53b.png)
+| ![CodedQRCodev2.1_1.png](https://s2.loli.net/2023/07/05/FxPcvyXEODLAKU9.png) | ![CodedQRCodev2.1_2.png](https://s2.loli.net/2023/07/05/HID26bofyVw8hGJ.png) |
+|------------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| ![CodedQRCodev2.1_3.png](https://s2.loli.net/2023/07/05/2gfB6WcwC7dpVUu.png) | ![CodedQRCodev2.1_4.png](https://s2.loli.net/2023/07/05/coNr7JEBGRnT53b.png) |
 
 ## Description
 Intellij Marketplace plugin: Code2QRCode
