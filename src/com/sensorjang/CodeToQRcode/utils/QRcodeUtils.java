@@ -1,6 +1,7 @@
 package com.sensorjang.CodeToQRcode.utils;
 
 import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
@@ -10,6 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Hashtable;
 
 
 public class QRcodeUtils {
@@ -17,8 +19,10 @@ public class QRcodeUtils {
 
 
     public static void generateQRCodeImage(String text, int width, int height) throws WriterException, IOException {
+        Hashtable<EncodeHintType, String> hints = new Hashtable<EncodeHintType, String>();
+        hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height);
+        BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height, hints);
         BufferedImage bufferedImage = bitmatrixToBufferedImage(bitMatrix);
         Image image = bufferedImage;
         ImageIcon imageIcon = new ImageIcon(image);
