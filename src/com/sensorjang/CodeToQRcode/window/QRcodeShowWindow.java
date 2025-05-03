@@ -1,5 +1,8 @@
 package com.sensorjang.CodeToQRcode.window;
 
+import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationType;
+import com.intellij.notification.Notifications;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.project.Project;
@@ -8,7 +11,11 @@ import com.intellij.openapi.wm.ToolWindow;
 import com.sensorjang.CodeToQRcode.Data.DataCenter;
 import com.sensorjang.CodeToQRcode.utils.QRcodeUtils;
 import com.sensorjang.CodeToQRcode.utils.RandomStringUtils;
+import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -32,6 +39,7 @@ public class QRcodeShowWindow {
     private JTextField pwTextField;
     private JTextField resultLinkTextField;
     private JTextField passwordTextField;
+    private JButton cpoyButton;
 
     public QRcodeShowWindow(Project project, ToolWindow toolWindow, List<String> language_type_list) {
         saveButton.addActionListener(new ActionListener() {
@@ -74,7 +82,32 @@ public class QRcodeShowWindow {
             }
         });
 
+        cpoyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                copyToClipboard(resultLinkTextField.getText());
+            }
+        });
+
         init(language_type_list);
+    }
+
+    private void copyToClipboard(String text) {
+        if (text == null || text.isEmpty()) {
+            // 显示错误通知
+            Notification notification = new Notification("com.Sensorjang.plugin.Code2QRcode.id", "No text to copy!", NotificationType.ERROR);
+            Notifications.Bus.notify(notification);
+            return;
+        }
+        // 创建一个字符串选择器
+        StringSelection stringSelection = new StringSelection(text);
+        // 获取系统剪贴板
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        // 将内容复制到剪贴板
+        clipboard.setContents(stringSelection, null);
+        // 显示成功通知
+        Notification notification = new Notification("com.Sensorjang.plugin.Code2QRcode.id", "Copied to clipboard!", NotificationType.INFORMATION);
+        Notifications.Bus.notify(notification);
     }
 
     private void init(List<String> language_type_list) {
@@ -107,7 +140,12 @@ public class QRcodeShowWindow {
         jsonMap.put("lang", language);
         jsonMap.put("content", text);
         jsonMap.put("password", password);
-        JSONObject jsonObject = new JSONObject(jsonMap);
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(jsonMap);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
         String json = jsonObject.toString();
 
         String responseStr="", key="ERROR";

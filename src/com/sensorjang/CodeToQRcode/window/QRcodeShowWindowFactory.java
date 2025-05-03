@@ -17,7 +17,7 @@ public class QRcodeShowWindowFactory implements ToolWindowFactory {
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
         List<String> language_type_list = List.of("plain", "python", "cpp", "java", "bash", "markdown", "json", "go");
         qRcodeShowWindow = new QRcodeShowWindow(project, toolWindow, language_type_list);
-        ContentFactory contentFactory = ContentFactory.SERVICE.getInstance();
+        ContentFactory contentFactory = toolWindow.getContentManager().getFactory();
         Content content = contentFactory.createContent(qRcodeShowWindow.getContentPanel(), "", false);
         toolWindow.getContentManager().addContent(content);
     }

@@ -16,7 +16,7 @@ In addition, it supports viewing the generated QR code in toolwindow and saving 
 It also supports creating web sharing links, burning after reading web sharing links (i.e. once link), and supports using custom passwords to restrict access to web sharing content.<br>
 The content shared through the web can support the display of Java, Python, C/C++, GO, MarkDown, Json, Bash, text and other formats.<br>
 <br>
-<em>Chinese and special characters are not supported at the moment</em>
+<em>Now supports [Chinese] and [special characters]</em>
 <br><br>
 这是一款可以帮助开发者在需要便捷分享IDEA内代码的工具。<br>
 开发者可以选中代码后一键生成二维码，便于快速精准得进行分享代码，接受者可以使用任意二维码识别工具提取结果。<br>
@@ -24,9 +24,15 @@ The content shared through the web can support the display of Java, Python, C/C+
 支持创建web分享链接、阅后即焚web分享链接，并且支持对web分享的内容使用自定义密码限制访问。<br>
 通过web分享的内容可以支持Java、Python、C/C++、GO、MarkDown、Json、Bash、文本等格式展示。<br>
 <br>
-<em>暂不支持中文和特殊字符</em><br>
+<em>现在已经支持[中文]和[特殊字符]</em><br>
 
 ## change-notes
+### version 2.1.2
+<em>Added support for Chinese characters and special characters</em><br>
+<em>Added a one-click copy button and a prompt after copying</em><br>
+<br>
+<em>新增对中文和特殊字符的支持</em><br>
+<em>新增一键复制按钮和复制成功后的提示</em><br>
 ### version 2.1.1
 <em>Support shortcut key <kbd>Ctrl+Alt+Q</kbd> to trigger QR code generation</em><br>
 <em>The plug-in now has a plug-in icon</em><br>
