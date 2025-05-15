@@ -4,17 +4,19 @@ Sensorjang
 ## Plugin Publishing Page
 Intellij plugin Marketplace: [Code2QRCode](https://plugins.jetbrains.com/plugin/17902-code2qrcode)
 
-| ![CodedQRCodev2.1_1.png](https://s2.loli.net/2023/07/05/FxPcvyXEODLAKU9.png) | ![CodedQRCodev2.1_2.png](https://s2.loli.net/2023/07/05/HID26bofyVw8hGJ.png) |
-|------------------------------------------------------------------------------|------------------------------------------------------------------------------|
-| ![CodedQRCodev2.1_3.png](https://s2.loli.net/2023/07/05/2gfB6WcwC7dpVUu.png) | ![CodedQRCodev2.1_4.png](https://s2.loli.net/2023/07/05/coNr7JEBGRnT53b.png) |
+| ![CodedQRCodev2.1.3_1.png](https://s2.loli.net/2025/05/15/O53KuoaUFvTZxRn.png) | ![CodedQRCodev2.1.3_2.png](https://s2.loli.net/2025/05/15/BMnGJq4OHjVItPS.png) |
+|-------------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| ![CodedQRCodev2.1.3_3.png](https://s2.loli.net/2025/05/15/YRa7XqwymjE9Zl5.png)  | ![CodedQRCodev2.1.3_4.png](https://s2.loli.net/2025/05/15/Q2BrdFvfm3NGVy7.png) |
 
 ## Description
 Intellij Marketplace plugin: Code2QRCode
-This is a tool that can help developers easily share the code in the idea when they need it.<br>
+
+This is a tool that can help developers easily share the code in the IDEA when they need it.<br>
 Developers can select the code and click to generate a QR code, which is convenient for sharing the code quickly and accurately. Recipients can use any QR code recognition tool to extract the results.<br>
-In addition, it supports viewing the generated QR code in toolwindow and saving the QR code in PNG format to local disk.<br>
-It also supports creating web sharing links, burning after reading web sharing links (i.e. once link), and supports using custom passwords to restrict access to web sharing content.<br>
-The content shared through the web can support the display of Java, Python, C/C++, GO, MarkDown, Json, Bash, text and other formats.<br>
+It supports viewing the generated QR code in the ToolWindow and saving the QR code in PNG format to the local disk.<br>
+It also supports creating web sharing links, burn-after-reading web sharing links (i.e., one-time links), and using custom passwords to restrict access to web sharing content.<br>
+The content shared via the web can support the display of Java, Python, C/C++, GO, MarkDown, Json, Bash, plain text, and other formats.<br>
+It supports generating web QR codes to enable scanning and jumping to the content sharing page.<br>
 <br>
 <em>Now supports [Chinese] and [special characters]</em>
 <br><br>
@@ -23,10 +25,19 @@ The content shared through the web can support the display of Java, Python, C/C+
 支持在ToolWindow中查看生成的二维码、保存二维码格式为PNG图片到本地磁盘中。<br>
 支持创建web分享链接、阅后即焚web分享链接，并且支持对web分享的内容使用自定义密码限制访问。<br>
 通过web分享的内容可以支持Java、Python、C/C++、GO、MarkDown、Json、Bash、文本等格式展示。<br>
+支持生成web二维码，实现扫码跳转到内容分享页面。<br>
 <br>
 <em>现在已经支持[中文]和[特殊字符]</em><br>
 
 ## change-notes
+### version 2.1.3
+<em>Added the ability to generate web QR codes for scanning and jumping to the content sharing page</em><br>
+<em>Added a prompt for successful saving of PNG images to the local disk</em><br>
+<em>Improved stability and user interaction experience</em><br>
+<br>
+<em>新增生成web二维码功能、实现扫码跳转到内容分享页面，并支持保存png图片到本地磁盘</em><br>
+<em>新增png图片保存到磁盘成功的提示</em><br>
+<em>优化稳定性和用户交互体验</em><br>
 ### version 2.1.2
 <em>Added support for Chinese characters and special characters</em><br>
 <em>Added a one-click copy button and a prompt after copying</em><br>
