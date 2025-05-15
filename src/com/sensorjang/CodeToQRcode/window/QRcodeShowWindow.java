@@ -13,7 +13,8 @@ import com.sensorjang.CodeToQRcode.utils.QRcodeUtils;
 import com.sensorjang.CodeToQRcode.utils.RandomStringUtils;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import java.awt.Toolkit;
+
+import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 
@@ -29,56 +30,102 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 public class QRcodeShowWindow {
+    private String pluginGroupId = "com.Sensorjang.plugin.Code2QRcode.id";
     private JPanel contentPanel;
     private JButton saveButton;
     private JLabel QRcodeLabel;
     private JButton generateLinkButton;
     private JButton generateOnceLinkButton;
     private JComboBox languageComboBox;
-    private JTextField pwTextField;
     private JTextField resultLinkTextField;
     private JTextField passwordTextField;
     private JButton cpoyButton;
+    private JLabel weblinkQRcodeLabel;
+    private JLabel webQrCodeField;
+    private JButton webCodeSaveButton;
 
     public QRcodeShowWindow(Project project, ToolWindow toolWindow, List<String> language_type_list) {
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                DataCenter data = DataCenter.getData();
+                ImageIcon qrCode = data.getQrCode();
+                if (qrCode == null) {
+                    return;
+                }
+
                 VirtualFile virtualFile = FileChooser.chooseFile(FileChooserDescriptorFactory.createSingleFolderDescriptor(), project, project.getBaseDir());
                 if (virtualFile != null) {
                     String path = virtualFile.getPath();
                     String topic = RandomStringUtils.getRandomString(10);
                     String filePath = path + "/" + topic + ".png";
-                    DataCenter data = DataCenter.getData();
-                    ImageIcon qrCode = data.getQrCode();
 
                     //二维码持久化
                     BufferedImage image = QRcodeUtils.imageToBufferedImage(qrCode.getImage());
                     File f = new File(filePath);
                     try {
                         ImageIO.write(image, "png", f);
-
                     } catch (IOException e2) {
                         e2.printStackTrace();
-
                     }
 
                 }
+
+                // 显示成功通知
+                String text = "Saved to:" + virtualFile.getPath();
+                Notification notification = new Notification(pluginGroupId, text, NotificationType.INFORMATION);
+                Notifications.Bus.notify(notification);
+            }
+        });
+
+        webCodeSaveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DataCenter data = DataCenter.getData();
+                ImageIcon webQrCode = data.getWebQrCode();
+                if (webQrCode == null) {
+                    return;
+                }
+
+                VirtualFile virtualFile = FileChooser.chooseFile(FileChooserDescriptorFactory.createSingleFolderDescriptor(), project, project.getBaseDir());
+                if (virtualFile != null) {
+                    String path = virtualFile.getPath();
+                    String topic = RandomStringUtils.getRandomString(10);
+                    String filePath = path + "/" + topic + ".png";
+
+                    //二维码持久化
+                    BufferedImage image = QRcodeUtils.imageToBufferedImage(webQrCode.getImage());
+                    File f = new File(filePath);
+                    try {
+                        ImageIO.write(image, "png", f);
+                    } catch (IOException e2) {
+                        e2.printStackTrace();
+                    }
+
+                }
+
+                // 显示成功通知
+                String text = "Saved to:" + virtualFile.getPath();
+                Notification notification = new Notification(pluginGroupId, text, NotificationType.INFORMATION);
+                Notifications.Bus.notify(notification);
             }
         });
 
         generateLinkButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                generateLink(false);
+                if(generateLink(false))
+                    generateWeblinkQRcode();
             }
         });
 
         generateOnceLinkButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                generateLink(true);
+                if(generateLink(true))
+                    generateWeblinkQRcode();
             }
         });
 
@@ -95,7 +142,7 @@ public class QRcodeShowWindow {
     private void copyToClipboard(String text) {
         if (text == null || text.isEmpty()) {
             // 显示错误通知
-            Notification notification = new Notification("com.Sensorjang.plugin.Code2QRcode.id", "No text to copy!", NotificationType.ERROR);
+            Notification notification = new Notification(pluginGroupId, "No text to copy!", NotificationType.ERROR);
             Notifications.Bus.notify(notification);
             return;
         }
@@ -106,7 +153,7 @@ public class QRcodeShowWindow {
         // 将内容复制到剪贴板
         clipboard.setContents(stringSelection, null);
         // 显示成功通知
-        Notification notification = new Notification("com.Sensorjang.plugin.Code2QRcode.id", "Copied to clipboard!", NotificationType.INFORMATION);
+        Notification notification = new Notification(pluginGroupId, "Copied to clipboard!", NotificationType.INFORMATION);
         Notifications.Bus.notify(notification);
     }
 
@@ -119,6 +166,8 @@ public class QRcodeShowWindow {
             languageComboBox.addItem(language);
         }
         languageComboBox.setSelectedIndex(0);
+        webQrCodeField.setVisible(false);
+        webCodeSaveButton.setVisible(false);
     }
 
     public void refreshQRcode() {
@@ -128,7 +177,7 @@ public class QRcodeShowWindow {
         resultLinkTextField.setText("");
     }
 
-    public void generateLink(Boolean onceflag) {
+    public boolean generateLink(Boolean onceflag) {
         DataCenter data = DataCenter.getData();
         String text = data.getSelectedText();
         String language = (String) languageComboBox.getSelectedItem();
@@ -187,10 +236,30 @@ public class QRcodeShowWindow {
         }
 
         String res = "https://paste.liumingye.cn/" + key;
-        if(key.equals("ERROR"))res = "ERROR";
+        if(key.equals("ERROR"))
+            res = "ERROR";
         resultLinkTextField.setText(res);
-        return;
 
+        if(key.equals("ERROR"))
+            return false;
+        return true;
+
+    }
+
+    public void generateWeblinkQRcode() {
+        if (resultLinkTextField.getText().isEmpty()) return;
+        String weblinkText = resultLinkTextField.getText();
+        try {
+            QRcodeUtils.generateWebQRCodeImage(weblinkText, 200, 200);
+        } catch (Exception exception1) {
+            exception1.printStackTrace();
+            return;
+        }// PP love TT
+        DataCenter data = DataCenter.getData();
+        ImageIcon qrCode = data.getWebQrCode();
+        weblinkQRcodeLabel.setIcon(qrCode);
+        webQrCodeField.setVisible(true);
+        webCodeSaveButton.setVisible(true);
     }
 
     public JPanel getContentPanel() {

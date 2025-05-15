@@ -32,6 +32,19 @@ public class QRcodeUtils {
         data.setSelectedText(text);
 
 
+    }
+
+    public static void generateWebQRCodeImage(String text, int width, int height) throws WriterException, IOException {
+        Hashtable<EncodeHintType, String> hints = new Hashtable<EncodeHintType, String>();
+        hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+        QRCodeWriter qrCodeWriter = new QRCodeWriter();
+        BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height, hints);
+        BufferedImage bufferedImage = bitmatrixToBufferedImage(bitMatrix);
+        Image image = bufferedImage;
+        ImageIcon imageIcon = new ImageIcon(image);
+
+        DataCenter data = DataCenter.getData();
+        data.setWebQrCode(imageIcon);
 
     }
 

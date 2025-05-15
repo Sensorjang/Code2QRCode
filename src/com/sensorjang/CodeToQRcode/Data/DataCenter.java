@@ -18,6 +18,7 @@ public class DataCenter {
     //Data:
     private static ImageIcon qrCode;
     private static String selectedText;
+    private static ImageIcon webQrCode;
 
 
 
@@ -37,5 +38,13 @@ public class DataCenter {
 
     public void setSelectedText(String selectedText) {
         DataCenter.selectedText = selectedText;
+    }
+
+    public ImageIcon getWebQrCode() {
+        return webQrCode;
+    }
+
+    public void setWebQrCode(ImageIcon webQrCode) {
+        DataCenter.webQrCode = webQrCode;
     }
 }

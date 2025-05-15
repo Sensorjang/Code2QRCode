@@ -10,7 +10,10 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.SelectionModel;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.MessageType;
+import com.intellij.openapi.wm.ToolWindow;
+import com.intellij.openapi.wm.ToolWindowManager;
 import com.sensorjang.CodeToQRcode.Data.DataCenter;
 import com.sensorjang.CodeToQRcode.utils.QRcodeUtils;
 import com.sensorjang.CodeToQRcode.window.QRcodeShowWindow;
@@ -23,7 +26,7 @@ public class PopupAction extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent e) {
-        // TODO: insert action logic here
+
         Editor editor = e.getRequiredData(CommonDataKeys.EDITOR);
         SelectionModel selectionModel = editor.getSelectionModel();
         String selectedText = selectionModel.getSelectedText();//获取得到selectedText选中文本
@@ -53,6 +56,16 @@ public class PopupAction extends AnAction {
         String notificationTextEnglish = "QR code generation succeeded! Please view or save the results in the [ToolWindow: Code2QRcode] on the right.";
         Notification notification = notificationGroup.createNotification(notificationTextEnglish, MessageType.INFO);
         Notifications.Bus.notify(notification);
+
+        // 自动打开工具窗口
+        Project project = e.getProject();
+        if (project != null) {
+            ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(project);
+            ToolWindow toolWindow = toolWindowManager.getToolWindow("Code2QRcode");
+            if (toolWindow != null) {
+                toolWindow.show();
+            }
+        }
 
         return;
     }
